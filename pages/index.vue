@@ -1,148 +1,169 @@
 <template>
-  <div class="root" v-on:keyup.left="alert('')">
-    <div class="one" v-if="show == 1">
-      <div class="one_content">
-        <img src="../static/img.png" />
-        <p>Masuda Takumi</p>
-        <h1>増田 拓海</h1>
+  <div class="root">
+    <div class="top">
+      <div class="top_content">
+        <img src="/img.png" alt="" />
+        <h1>Masuda Takumi</h1>
       </div>
     </div>
-    <div class="one" v-if="show == 2">
-      <div class="one_content">
-        <h1 style="margin-bottom: 20px">Skills</h1>
-        <h2 style="margin-bottom: 5px">言語</h2>
-        <div style="text-align: left">
-          <p>HTML/CSS：それなりに</p>
-          <p>JavaScript：最低限</p>
-          <p>Python：自信あり</p>
-          <p>Go：ちょっとかじった</p>
-        </div>
-
-        <h2 style="margin-top: 15px; margin-bottom: 5px">フレームワーク</h2>
-        <div style="text-align: left">
-          <p>Nuxt.js：一番得意かも</p>
-          <p>Flask：実務経験あり</p>
-          <p>Express：最低限</p>
-          <p>Django：今書けるか微妙</p>
-        </div>
-        <h2 style="margin-top: 15px; margin-bottom: 5px">その他</h2>
-        <div style="text-align: left">
-          <p>簿記：日商簿記3級</p>
-          <p>freee：個人事業主の確定申告経験</p>
-        </div>
+    <div class="skills">
+      <h1>Skills</h1>
+      <div class="lng">
+        <h2>Language</h2>
+        <p>HTML/CSS/Sass（A)</p>
+        <p>JavaScript（B）</p>
+        <p>TypeScript（C）</p>
+        <p>Python（A）</p>
+        <p>Go（C）</p>
+      </div>
+      <div class="fw">
+        <h2>FrameWork</h2>
+        <p>Vue.js/Nuxt.js（A)</p>
+        <p>Express（B）</p>
+        <p>Flask（A)</p>
+        <p>Django（C)</p>
       </div>
     </div>
-    <div class="one" v-if="show == 3">
-      <div class="one_content">
-        <h1 style="margin-bottom: 20px">Works</h1>
-        <h2 style="margin-bottom: 5px">
-          <a href="https://fukushiki-kakeibo.com">複式家計簿</a>
-        </h2>
-
-        <p>複式簿記で家計簿をつけることができるWebアプリです。</p>
-        <p>Nuxt.js+Firebaseで開発しています。</p>
-        <p>
-          U22プログラミングコンテスト2021でスポンサー賞「PCAクラウド賞」を頂きました。
-        </p>
-        <h2 style="margin-top: 15px; margin-bottom: 5px">TownWith(閉鎖)</h2>
-        <p>地域の魅力を伝えることができるWebサービスです。</p>
-        <p>Flaskで開発しました。</p>
-        <h2 style="margin-top: 15px; margin-bottom: 5px">ThinkShare(閉鎖)</h2>
-        <p>プログラミングを始めて1本目にリリースしたSNSです。</p>
-        <p>Pythonでフレームワークを使わずに開発しました。</p>
-      </div>
-    </div>
-    <div class="one" v-if="show == 4">
-      <div class="one_content">
-        <h1 style="margin-bottom: 20px">History</h1>
-        <div style="text-align: left">
-          <p>2021/12~：？？？</p>
-          <p>2021/11：U22プロコン スポンサー賞受賞</p>
-          <p>2021/06・07：家計簿アプリの開発・公開</p>
-          <p>2020/06：Flask+Vueの仕事を開始</p>
-          <p>2020/04：N高入学</p>
-          <p>2020/04：個人事業の開業届を提出</p>
+    <div class="links">
+      <h1>Links</h1>
+      <div class="link">
+        <div class="link_button" @click="to('https://twitter.com/takumi_mas')">
+          Twitter
         </div>
-      </div>
-    </div>
-    <div class="one" v-if="show == 5">
-      <div class="one_content">
-        <h1 style="margin-bottom: 20px">Links</h1>
-        <div style="text-align: left">
-          <a href="https://twitter.com/takumi_mas"><p>Twitter</p></a>
-          <a href="https://github.com/takumimas"><p>Github</p></a>
-          <a href="https://www.wantedly.com/id/takumimas"><p>Wantedly</p></a>
-          <a href="https://masublog.net/"><p>個人ブログ</p></a>
+        <div
+          class="link_button button_r"
+          @click="to('https://github.com/takumimas')"
+        >
+          Github
         </div>
-      </div>
-    </div>
-    <div class="f">
-      <div>
-        <p v-if="show != 1" @click="show -= 1">戻る</p>
-      </div>
-      <div style="text-align: right">
-        <p @click="show += 1" v-if="show != 5">進む</p>
+        <div
+          class="link_button"
+          @click="to('https://www.wantedly.com/id/takumimas')"
+        >
+          Wantedly
+        </div>
+        <div class="link_button button_r" @click="to('https://masublog.net/')">
+          Blog
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.root {
-  min-height: 100vh;
+@import url("https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique&display=swap:wght@800");
+.top {
   width: 100vw;
-  background-color: #48c774;
+  height: 100vh;
+  background-image: url("/bg.png");
+  background-size: cover;
 }
-.f {
-  height: 5vh;
-  display: flex;
-}
-.f div {
+.top_content {
+  text-align: center;
+  font-size: 3rem;
   color: white;
-  font-size: 1.1rem;
-  width: 50vw;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 10px;
+  padding-top: 200px;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
 }
-a {
-  color: #FF3860;
+.top_content img {
+  width: 140px;
 }
-.one {
+.skills {
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #0dbf9e;
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.skills h1 {
   color: white;
-  height: 95vh;
+  font-size: 2.5rem;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+}
+.lng {
+  width: 400px;
+  height: 270px;
+  background-color: #f7b521;
+  margin: auto;
+  margin-top: 20px;
+  color: white;
+  padding: 10px 40px;
+}
+.lng h2 {
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 1.5rem;
+}
+.lng p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+  text-align: left;
+}
+.fw {
+  width: 400px;
+  height: 240px;
+  background-color: #077bc5;
+  margin: auto;
+  margin-top: 20px;
+  color: white;
+  padding: 10px 40px;
+}
+.fw h2 {
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+  font-size: 1.5rem;
+}
+.fw p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+  text-align: left;
+}
+.links {
+  width: 100vw;
+  min-height: 100vh;
+  text-align: center;
+  background-color: #f7b521;
+  margin: auto;
+  color: white;
+  padding: 30px 40px;
+}
+.links h1 {
+  color: white;
+  font-size: 2.5rem;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
+}
+.link {
+  width: 400px;
+  height: 350px;
+  margin: auto;
+  margin-top: 40px;
+  background-color: #0dbf9e;
+  padding: 20px;
+}
+.link_button {
+  width: 250px;
+  height: 60px;
+  background-color: #077bc5;
+  margin: auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 15px;
+  font-family: "Zen Kaku Gothic Antique", sans-serif;
 }
-.one_content {
-  text-align: center;
-}
-.one_content img {
-  width: 140px;
-  margin-bottom: 20px;
-}
-.one_content p {
-  font-size: 1.2rem;
-}
-h1 {
-  font-size: 2rem;
-  font-weight: 500;
-}
-h2 {
-  font-size: 1.4rem;
-  font-weight: 400;
+
+.button_r {
+  background-color: #d72678;
 }
 </style>
 
 <script>
 export default {
-  data: function () {
-    return {
-      show: 1,
-    };
+  methods: {
+    to(link) {
+      location.href = link;
+    },
   },
-  mounted() {},
-  methods: {},
 };
 </script>
